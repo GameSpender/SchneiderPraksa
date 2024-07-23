@@ -10,6 +10,8 @@
 #include <string>
 #include <fstream>
 #include <chrono>
+#include <sstream>
+#include <vector>
 
 using namespace std;
 
@@ -40,29 +42,85 @@ void printElement(GenericElement& elem, ostream& output) {
     }
 }
 
-void saveElementsToFile(GenericElement* elements, int count, ofstream file) {
+void printElement(vector<GenericElement> elemVector, ostream& output) {
+    for (auto elem : elemVector) {
+        printElement(elem, output);
+        output << endl;
+    }
+}
+
+// parsiranje GenericElement-a iz stringa
+GenericElement parseStringToElement(string data) {
+    stringstream sstream(data);
+    GenericElement elem;
+
+    sstream >> elem.id;
+    for (int i = 0; i < VALUES_LENGTH; i++) {
+        if (sstream.eof())
+            elem.values[i] = -1;
+        sstream >> elem.values[i];
+    }
+    return elem;
+}
+
+
+// sspis GenericElement-a u dati ofstream
+void writeElementsToFile(vector<GenericElement> elementVector, ofstream& file) {
     if (!file.is_open())
         return;
-    for (int i = 0; i < count; i++) {
+    printElement(elementVector, file);
+}
 
+vector<GenericElement> readElementsFromFile(ifstream& file) {
+    vector<GenericElement> elementVector;
+    string temp;
+    int i = 0;
+    while (!file.eof()) {
+        getline(file, temp);
+        elementVector.push_back(parseStringToElement(temp));
     }
+    return elementVector;
 }
 
 int main()
 {
     cout << "Hello World!" << endl;
+
+
     GenericElement testElem = generateRandomElement(1);
     printElement(testElem, cout);
     cout << endl;
+
     auto start = chrono::high_resolution_clock::now();
     testElem = generateRandomElement(1300);
     auto end = chrono::high_resolution_clock::now();
     printElement(testElem, cout);
     cout << endl << "time: " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
 
+    string testString("69 1 2 3 4 5 6 7 8 9 10");
+    testElem = parseStringToElement(testString);
+    printElement(testElem, cout);
+    cout << endl;
 
-    GenericElement elementArray[ELEMENT_COUNT];
+
+    vector<GenericElement> elementVector;
     for (int i = 0; i < ELEMENT_COUNT; i++) {
-        elementArray[i] = generateRandomElement(i);
+        elementVector.push_back(generateRandomElement(i));
+    }
+
+    ofstream outputFile("genericElement1000.txt");
+    //writeElementsToFile(elementVector, outputFile);
+    printElement(elementVector, outputFile);
+    outputFile.close();
+
+
+    ifstream inputFile("genericElementAny.txt");
+    if (inputFile.is_open()) {
+        elementVector = readElementsFromFile(inputFile);
+        printElement(elementVector, cout);
+    }
+    else
+    {
+        cout << "cannot open file" << endl;
     }
 }
