@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace CSPretraga
 {
+
+    // Proizvoljni podatak koji sadrži ID i 15 integer polja
     internal class Podatak
     {
         public int Id;

@@ -5,38 +5,50 @@ using System.Diagnostics;
 
 namespace CSPretraga
 {
+    // Schneider Praksa zadatak
+    // Merenje brzine pretrage raznih struktura podataka
     internal class Program
     {
-        const int elemNum = 10000;
-        static Podatak[] array = new Podatak[elemNum];
-        static List<Podatak> list = new List<Podatak>();
-        static Dictionary<int, Podatak> dict = new Dictionary<int, Podatak>();
+        static int elemNum;
+        static Podatak[]? array;
+        static List<Podatak>? list;
+        static Dictionary<int, Podatak>? dict;
 
-        /// <summary>
-        /// U ovaj niz ćemo stavljati nađene elemente kod svakog algoritma
-        /// </summary>
-
-        static Stopwatch sw = new Stopwatch();
+        static TimeSpan result;
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Pretraga niza");
-            Popuni();
+            elemNum = 2;
+            for (int i = 0; i < 16; i++)
+            {
+                array = new Podatak[elemNum];
+                list = new List<Podatak>();
+                dict = new Dictionary<int, Podatak>();
+                GenerateData();
 
-            TimeSpan result = Testing.SearchArrayTest(array, elemNum);
-            Console.WriteLine($"Podatak[] -- Ukupno vreme je {result.TotalMilliseconds} ms");
+                Console.WriteLine($"Testiranje pretrage struktura podataka dužine {elemNum}");
 
-            result = Testing.SearchListTest(list);
-            Console.WriteLine($"List<Podatak> -- Ukupno vreme je {result.TotalMilliseconds} ms");
+                result = Testing.SearchArrayTest(array, elemNum);
+                Console.WriteLine($"Podatak[] -- Ukupno vreme je {result.TotalMilliseconds} ms");
 
-            result = Testing.SearchDictionaryTest(dict);
-            Console.WriteLine($"Dictionary<int, Podatak> -- Ukupno vreme je {result.TotalMilliseconds} ms");
+                result = Testing.SearchListTest(list);
+                Console.WriteLine($"List<Podatak> -- Ukupno vreme je {result.TotalMilliseconds} ms");
 
-            
+                result = Testing.SearchDictionaryTest(dict);
+                Console.WriteLine($"Dictionary<int, Podatak> -- Ukupno vreme je {result.TotalMilliseconds} ms");
+                Console.WriteLine();
+
+                elemNum *= 2;
+            }
         }
 
-        static void Popuni()
+        // Pomoćna funkcija za inicijalizaciju svih podataka
+        static void GenerateData()
         {
+            if (array == null || list == null || dict == null)
+            {
+                return;
+            }
             for (int i = 0; i < elemNum; i++)
             {
                 array[i] = new Podatak(i);

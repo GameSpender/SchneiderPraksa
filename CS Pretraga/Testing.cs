@@ -10,6 +10,7 @@ namespace CS_Pretraga
 {
     internal class Testing
     {
+        // Test funkcija koja traži svaki element u nizu
         static public TimeSpan SearchArrayTest(Podatak[] array, int size)
         {
             Stopwatch sw = new Stopwatch();
@@ -17,35 +18,14 @@ namespace CS_Pretraga
             for (int i = 0; i < size; i++)
             {
                 Podatak? result = FindElem(array, i);
+                if (result != null)
+                    result.Payload[0] = 10;
             }
             sw.Stop();
             return sw.Elapsed;
         }
 
-        static public TimeSpan SearchListTest(List<Podatak> list)
-        {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            for (int i = 0; i < list.Count; i++)
-            {
-                Podatak? result = list.Find(p => p.Id == i);
-            }
-            sw.Stop();
-            return sw.Elapsed;
-        }
-
-        static public TimeSpan SearchDictionaryTest(Dictionary<int, Podatak> dict)
-        {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            for (int i = 0; i < dict.Count; i++)
-            {
-                Podatak? result = dict[i];
-            }
-            sw.Stop();
-            return sw.Elapsed;
-        }
-
+        // Pomoćna funkcija uz SearchArrayTest za pronalazak Podatka sa datim ID-om
         static private Podatak? FindElem(Podatak[] niz, int id)
         {
             for (int i = 0; i < niz.Length; i++)
@@ -59,8 +39,35 @@ namespace CS_Pretraga
             }
             return null;
         }
+
+        // Test funkcija koja traži svaki element u listi
+        static public TimeSpan SearchListTest(List<Podatak> list)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            for (int i = 0; i < list.Count; i++)
+            {
+                Podatak? result = list.Find(p => p.Id == i);
+                if (result != null)
+                    result.Payload[0] = 10;
+            }
+            sw.Stop();
+            return sw.Elapsed;
+        }
+
+        // Test funkcija koja traži svaki element u rečniku
+        static public TimeSpan SearchDictionaryTest(Dictionary<int, Podatak> dict)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            for (int i = 0; i < dict.Count; i++)
+            {
+                Podatak? result = dict[i];
+                if (result != null)
+                    result.Payload[0] = 10;
+            }
+            sw.Stop();
+            return sw.Elapsed;
+        }
     }
-
-
-
 }
