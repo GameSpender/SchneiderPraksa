@@ -13,114 +13,56 @@
 #include <sstream>
 #include <vector>
 
+//#include "TestingFunctions.h"
+#include "GenericElement.h"
+
 using namespace std;
 
-#define NAME_LENGTH 5
-#define VALUES_LENGTH 14
-#define ELEMENT_COUNT 1000
-
-// id, 14 proizvoljnih int vrednosti
-struct GenericElement {
-    int id;
-    int values[VALUES_LENGTH];
-};
-
-GenericElement generateRandomElement(int id) {
-    GenericElement elem;
-    elem.id = id;
-
-    for (int i = 0; i < VALUES_LENGTH; i++) {
-        elem.values[i] = rand();
-    }
-    return elem;
-}
-
-void printElement(GenericElement& elem, ostream& output) {
-    output << elem.id << " ";
-    for (int i = 0; i < VALUES_LENGTH; i++) {
-        output << elem.values[i] << " ";
-    }
-}
-
-void printElement(vector<GenericElement> elemVector, ostream& output) {
-    for (auto elem : elemVector) {
-        printElement(elem, output);
-        output << endl;
-    }
-}
-
-// parsiranje GenericElement-a iz stringa
-GenericElement parseStringToElement(string data) {
-    stringstream sstream(data);
-    GenericElement elem;
-
-    sstream >> elem.id;
-    for (int i = 0; i < VALUES_LENGTH; i++) {
-        if (sstream.eof())
-            elem.values[i] = -1;
-        sstream >> elem.values[i];
-    }
-    return elem;
-}
-
-
-// sspis GenericElement-a u dati ofstream
-void writeElementsToFile(vector<GenericElement> elementVector, ofstream& file) {
-    if (!file.is_open())
-        return;
-    printElement(elementVector, file);
-}
-
-vector<GenericElement> readElementsFromFile(ifstream& file) {
-    vector<GenericElement> elementVector;
-    string temp;
-    int i = 0;
-    while (!file.eof()) {
-        getline(file, temp);
-        elementVector.push_back(parseStringToElement(temp));
-    }
-    return elementVector;
-}
 
 int main()
 {
     cout << "Hello World!" << endl;
 
 
-    GenericElement testElem = generateRandomElement(1);
-    printElement(testElem, cout);
-    cout << endl;
+    //GenericElement testElem = generateRandomElement(1);
+    //printElement(testElem, cout);
+    //cout << endl;
 
-    auto start = chrono::high_resolution_clock::now();
-    testElem = generateRandomElement(1300);
-    auto end = chrono::high_resolution_clock::now();
-    printElement(testElem, cout);
-    cout << endl << "time: " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
+    //auto start = chrono::high_resolution_clock::now();
+    //testElem = generateRandomElement(1300);
+    //auto end = chrono::high_resolution_clock::now();
+    //printElement(testElem, cout);
+    //cout << endl << "time: " << chrono::duration_cast<chrono::nanoseconds>(end - start).count() << endl;
 
-    string testString("69 1 2 3 4 5 6 7 8 9 10");
-    testElem = parseStringToElement(testString);
-    printElement(testElem, cout);
-    cout << endl;
-
-
-    vector<GenericElement> elementVector;
-    for (int i = 0; i < ELEMENT_COUNT; i++) {
-        elementVector.push_back(generateRandomElement(i));
-    }
-
-    ofstream outputFile("genericElement1000.txt");
-    //writeElementsToFile(elementVector, outputFile);
-    printElement(elementVector, outputFile);
-    outputFile.close();
+    //string testString("69 1 2 3 4 5 6 7 8 9 10");
+    //testElem = parseStringToElement(testString);
+    //printElement(testElem, cout);
+    //cout << endl;
 
 
-    ifstream inputFile("genericElementAny.txt");
-    if (inputFile.is_open()) {
-        elementVector = readElementsFromFile(inputFile);
-        printElement(elementVector, cout);
-    }
-    else
-    {
-        cout << "cannot open file" << endl;
-    }
+    //vector<GenericElement> elementVector;
+    //for (int i = 0; i < ELEMENT_COUNT; i++) {
+    //    elementVector.push_back(generateRandomElement(i));
+    //}
+
+    //ofstream outputFile("genericElement100000.txt");
+    ////writeElementsToFile(elementVector, outputFile);
+    //printElement(elementVector, outputFile);
+    //outputFile.close();
+
+
+    //ifstream inputFile("genericElementAny.txt");
+    //if (inputFile.is_open()) {
+    //    elementVector = readElementsFromFile(inputFile);
+    //    printElement(elementVector, cout);
+    //}
+    //else
+    //{
+    //    cout << "cannot open file" << endl;
+    //}
+
+    /*if (tryFindId(69, testElem, elementVector)) {
+        cout << "Found element with id 69" << endl;
+        cout << testElem << endl;
+    }*/
 }
