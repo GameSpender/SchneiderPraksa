@@ -11,6 +11,13 @@ namespace CSPretraga
     internal class Testing
     {
         // Test funkcija koja traži svaki element u nizu
+        /// <summary>
+        /// Traži sve elemente niza
+        /// Modifikuje payload[0] podatka da bude 10
+        /// </summary>
+        /// <param name="array">niz</param>
+        /// <param name="size">veličina niza</param>
+        /// <returns>Vreme pretrage svih podataka</returns>
         static public TimeSpan SearchArrayTest(Podatak[] array, int size)
         {
             Stopwatch sw = new Stopwatch();
@@ -26,6 +33,13 @@ namespace CSPretraga
         }
 
         // Pomoćna funkcija uz SearchArrayTest za pronalazak Podatka sa datim ID-om
+        /// <summary>
+        /// Helper
+        /// Traži Podatak sa datom ID vrednošču
+        /// </summary>
+        /// <param name="niz">niz za pretragu</param>
+        /// <param name="id">ID vrednost</param>
+        /// <returns>Podatak odgovarajuće ID vrednosti ili null ako ne postoji</returns>
         static private Podatak? FindElem(Podatak[] niz, int id)
         {
             for (int i = 0; i < niz.Length; i++)
@@ -41,6 +55,13 @@ namespace CSPretraga
         }
 
         // Test funkcija koja traži svaki element u listi
+        /// <summary>
+        /// DEPRECATED - koristiti <see cref="LinkedListTesting.Search()"/>
+        /// Traži sve elemente Liste
+        /// Modifikuje payload[0] podatka da bude 11
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns>Vreme pretrage svih podataka</returns>
         static public TimeSpan SearchListTest(List<Podatak> list)
         {
             Stopwatch sw = new Stopwatch();
@@ -49,7 +70,7 @@ namespace CSPretraga
             {
                 Podatak? result = list.Find(p => p.Id == i);
                 if (result != null)
-                    result.Payload[0] = 10;
+                    result.Payload[0] = 11;
             }
             sw.Stop();
             return sw.Elapsed;
@@ -57,10 +78,11 @@ namespace CSPretraga
 
         // Test funkcija koja traži svaki element u rečniku
         /// <summary>
-        /// Test funkcija koja traži svaki element u rečniku
+        /// Traži sve elemente u rečniku
+        /// Modifikuje Payload[0] Podatka da bude 12
         /// </summary>
         /// <param name="dict"></param>
-        /// <returns>vreme pretrage</returns>
+        /// <returns>Vreme pretrage svih podataka</returns>
         static public TimeSpan SearchDictionaryTest(Dictionary<int, Podatak> dict)
         {
             Stopwatch sw = new Stopwatch();
@@ -69,7 +91,7 @@ namespace CSPretraga
             {
                 Podatak? result = dict[i];
                 if (result != null)
-                    result.Payload[0] = 10;
+                    result.Payload[0] = 12;
             }
             sw.Stop();
             return sw.Elapsed;

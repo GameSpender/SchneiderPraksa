@@ -43,7 +43,9 @@ namespace CSPretraga.Strukture
             }
             else
             {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 last.Next = new Node(value);
+#pragma warning restore CS8602
                 last = last.Next;
             }
             Count++;

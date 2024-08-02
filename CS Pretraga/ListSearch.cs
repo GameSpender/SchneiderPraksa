@@ -11,7 +11,8 @@ namespace CSPretraga
     internal class ListSearch
     {
         /// <summary>
-        /// Pretraga liste koristeći List.Find() i Linq
+        /// Traži sve elemente liste koristeći <see cref="List.Find()"/> i Linq
+        /// Modifikuje payload[0] podatka da bude 20
         /// </summary>
         /// <param name="list">Lista</param>
         /// <returns>Vreme pretrage svih podataka</returns
@@ -21,7 +22,7 @@ namespace CSPretraga
             for (int i = 0; i < list.Count; i++)
             {
                 Podatak? rez = list.Find(p => p.Id == i);
-                rez.Payload[0] = 13;
+                if(rez != null) rez.Payload[0] = 20;
             }
             sw.Stop();
 
@@ -30,7 +31,8 @@ namespace CSPretraga
 
 
         /// <summary>
-        /// Pretraga liste koristeći for petlju
+        /// Traži sve elemente liste koristeći <see cref="for"/> petlju
+        /// Modifikuje payload[0] podatka da bude 21
         /// </summary>
         /// <param name="list">Lista</param>
         /// <returns>Vreme pretrage svih podataka</returns>
@@ -43,7 +45,7 @@ namespace CSPretraga
                 {
                     if (list[j].Id == i)
                     {
-                        list[j].Payload[0] = 13;
+                        list[j].Payload[0] = 21;
                         break;
                     }
                 }
@@ -54,7 +56,8 @@ namespace CSPretraga
         }
 
         /// <summary>
-        /// Pretraga liste koristeći foreach petlju
+        /// Traži sve elemente liste koristeći <see cref="foreach"/> petlju
+        /// Modifikuje payload[0] podatka da bude 22
         /// </summary>
         /// <param name="list">Lista</param>
         /// <returns>Vreme pretrage svih podataka</returns>
@@ -67,7 +70,7 @@ namespace CSPretraga
                 {
                     if (pod.Id == i)
                     {
-                        pod.Payload[0] = 13;
+                        pod.Payload[0] = 22;
                         break;
                     }
                 }

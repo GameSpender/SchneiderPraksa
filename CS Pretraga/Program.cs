@@ -15,7 +15,7 @@ namespace CSPretraga
         static Dictionary<int, Podatak>? dict;
         static MyLinkedList<Podatak>? myLinkedList;
         static LinkedList<Podatak>? linkedList;
-        static SimpleLinkedList simpleLinkedList;
+        static SimpleLinkedList? simpleLinkedList;
 
         static TimeSpan result;
 
@@ -42,7 +42,7 @@ namespace CSPretraga
                 result = Testing.SearchArrayTest(array, elemNum);
                 Console.Write($"{result.TotalMilliseconds}, ");
 
-                result = Testing.SearchListTest(list);
+                result = ListSearch.Search(list);
                 Console.Write($"{result.TotalMilliseconds}, ");
 
                 result = Testing.SearchDictionaryTest(dict);
@@ -68,7 +68,7 @@ namespace CSPretraga
         // Pomoćna funkcija za inicijalizaciju svih podataka
         static void GenerateData()
         {
-            if (array == null || list == null || dict == null || myLinkedList == null || linkedList == null)
+            if (array == null || list == null || dict == null || myLinkedList == null || linkedList == null || simpleLinkedList == null)
             {
                 return;
             }

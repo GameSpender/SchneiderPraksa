@@ -9,17 +9,18 @@ namespace CSPretraga
 
     // Proizvoljni podatak koji sadrži ID i 15 integer polja
     /// <summary>
-    /// Generic podatak
+    /// Proizvoljni podatak
     /// </summary>
     internal class Podatak
     {
         public int Id;
         public int[] Payload;
+        public int PayloadSize { get; private set; } = 15;
 
         public Podatak(int id)
         {
             Id = id;
-            Payload = new int[15];
+            Payload = new int[PayloadSize];
         }
     }
 }
