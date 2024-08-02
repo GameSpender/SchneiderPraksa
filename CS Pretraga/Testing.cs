@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CS_Pretraga
+namespace CSPretraga
 {
     internal class Testing
     {
@@ -56,6 +56,11 @@ namespace CS_Pretraga
         }
 
         // Test funkcija koja traži svaki element u rečniku
+        /// <summary>
+        /// Test funkcija koja traži svaki element u rečniku
+        /// </summary>
+        /// <param name="dict"></param>
+        /// <returns>vreme pretrage</returns>
         static public TimeSpan SearchDictionaryTest(Dictionary<int, Podatak> dict)
         {
             Stopwatch sw = new Stopwatch();
@@ -69,5 +74,20 @@ namespace CS_Pretraga
             sw.Stop();
             return sw.Elapsed;
         }
+
+
+        // sa trenutnom strukturom podataka, nije moguće koristiti LinkedList klasu pošto
+        // nema predikatsku pretragu
+        /*static public TimeSpan SearchLinkedList(LinkedList<Podatak> list)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            for (int i = 0; i <= list.Count; i++)
+            {
+                
+            }
+            sw.Stop();
+            return sw.Elapsed;
+        }*/
     }
 }

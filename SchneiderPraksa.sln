@@ -5,7 +5,7 @@ VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SchneiderPraksa", "SchneiderPraksa\SchneiderPraksa.vcxproj", "{2E23613C-431A-4F83-BA3B-E8C68513A887}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS Pretraga", "CS Pretraga\CS Pretraga.csproj", "{A477EC99-44B5-468C-B5CE-C551D3DF35C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSPretraga", "CS Pretraga\CSPretraga.csproj", "{A477EC99-44B5-468C-B5CE-C551D3DF35C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

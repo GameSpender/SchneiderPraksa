@@ -8,6 +8,9 @@ namespace CSPretraga
 {
 
     // Proizvoljni podatak koji sadrži ID i 15 integer polja
+    /// <summary>
+    /// Generic podatak
+    /// </summary>
     internal class Podatak
     {
         public int Id;
