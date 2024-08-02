@@ -11,11 +11,12 @@ namespace CSPretraga
     internal class ListSearch
     {
         /// <summary>
-        /// Traži sve elemente liste koristeći <see cref="List.Find()"/> i Linq
+        /// Traži sve elemente liste koristeći <see cref="List{T}.Find(Predicate{T})"/>
+        /// <br/>
         /// Modifikuje payload[0] podatka da bude 20
         /// </summary>
-        /// <param name="list">Lista</param>
-        /// <returns>Vreme pretrage svih podataka</returns
+        /// <param name="list"></param>
+        /// <returns></returns>
         static public TimeSpan Search(List<Podatak> list)
         {
             Stopwatch sw = Stopwatch.StartNew();
@@ -31,7 +32,8 @@ namespace CSPretraga
 
 
         /// <summary>
-        /// Traži sve elemente liste koristeći <see cref="for"/> petlju
+        /// Traži sve elemente liste koristeći for petlju
+        /// <br/>
         /// Modifikuje payload[0] podatka da bude 21
         /// </summary>
         /// <param name="list">Lista</param>
@@ -56,7 +58,8 @@ namespace CSPretraga
         }
 
         /// <summary>
-        /// Traži sve elemente liste koristeći <see cref="foreach"/> petlju
+        /// Traži sve elemente liste koristeći foreach petlju
+        /// <br/>
         /// Modifikuje payload[0] podatka da bude 22
         /// </summary>
         /// <param name="list">Lista</param>
