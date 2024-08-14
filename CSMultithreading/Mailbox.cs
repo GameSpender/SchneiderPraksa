@@ -9,12 +9,10 @@ namespace CSMultithreading
     internal class Mailbox<T>
     {
         private Queue<T> queue;
-        private Mutex mutex;
 
         public Mailbox()
         {
             queue = new Queue<T>();
-            mutex = new Mutex();
         }
 
         /// <summary>
